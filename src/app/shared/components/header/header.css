@@ -1,0 +1,23 @@
+.header {
+ display: flex;
+ justify-content: space-between;
+ align-items: center;
+ padding: 20px 24px;
+ background-color: #000000;
+}
+.logo {
+ font-size: 24px;
+ font-weight: bold;
+ color: #ff3d3d;
+}
+.menu {
+ display: flex;
+ gap: 20px;
+}
+.menu a {
+ color: #ffffff;
+ text-decoration: none;
+}
+.menu a:hover {
+ color: #ff3d3d;
+} 
