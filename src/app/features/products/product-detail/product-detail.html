@@ -1,0 +1,27 @@
+<section class="detail-container">
+  @if (loading) {
+    <p>Carregando detalhes do produto...</p>
+  }
+
+  @if (errorMessage) {
+    <div class="error">
+      {{ errorMessage }}
+    </div>
+  }
+
+  @if (product) {
+    <div class="detail-card">
+      <img [src]="product.image" [alt]="product.name" />
+      <div class="content">
+        <h2>{{ product.name }}</h2>
+        <p><strong>Categoria:</strong> {{ product.category }}</p>
+        <p><strong>Tamanho:</strong> {{ product.size }}</p>
+        <p><strong>Preço:</strong> R$ {{ product.price }}</p>
+        <p><strong>Descrição:</strong> {{ product.description }}</p>
+        <a routerLink="/produtos" class="back-btn">
+          Voltar para listagem
+        </a>
+      </div>
+    </div>
+  }
+</section>
