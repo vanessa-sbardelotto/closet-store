@@ -1,0 +1,22 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "name": "Camiseta Básica",
+      "description": "Camiseta de algodão disponível em várias cores.",
+      "category": "Camisetas",
+      "price": 49.90,
+      "image": "https://i.pinimg.com/1200x/60/a0/16/60a0168607e243999035de98de45cfe6.jpg",
+      "size": "M"
+    },
+    {
+      "id": 2,
+      "name": "Calça Jeans",
+      "description": "Calça jeans slim fit com lavagem escura.",
+      "category": "Calças",
+      "price": 129.90,
+      "image": "https://i.pinimg.com/736x/76/b9/c3/76b9c30d4bf7c9b0d769f7039a3a0bcd.jpg",
+      "size": "42"
+    }
+  ]
+}
