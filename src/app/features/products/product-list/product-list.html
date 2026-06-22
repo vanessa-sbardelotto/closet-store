@@ -1,0 +1,26 @@
+<section class="list-box">
+  <div class="top-bar">
+    <h2>Lista de produtos</h2>
+    <a routerLink="/cadastro-produto" class="btn">Novo produto</a>
+  </div>
+
+  @if (products.length === 0) {
+    <div class="empty-state">
+      <p>Nenhum produto cadastrado até o momento.</p>
+    </div>
+  }
+
+  @for (product of products; track product.id) {
+    <div class="product-item">
+      <h3>{{ product.name }}</h3>
+      <p><strong>Categoria:</strong> {{ product.category }}</p>
+      <p><strong>Tamanho:</strong> {{ product.size }}</p>
+      <p><strong>Preço:</strong> {{ product.price }}</p>
+      <p><strong>Descrição:</strong> {{ product.description }}</p>
+      <div class="actions">
+        <button type="button" class="edit-btn" (click)="edit(product.id)">Editar</button>
+        <button type="button" class="delete-btn" (click)="remove(product.id)">Excluir</button>
+      </div>
+    </div>
+  }
+</section>

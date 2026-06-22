@@ -1,19 +1,26 @@
 .hero {
- max-width: 700px;
+  max-width: 700px;
 }
 .hero h1 {
- font-size: 32px;
- margin-bottom: 12px;
+  font-size: 32px;
+  margin-bottom: 12px;
 }
 .hero p {
- color: #cccccc;
- margin-bottom: 20px;
+  color: #cccccc;
+  margin-bottom: 20px;
+}
+.actions {
+  display: flex;
+  gap: 12px;
 }
 .btn {
- display: inline-block;
- padding: 12px 18px;
- background-color: #ff3d3d;
- color: #ffffff;
- text-decoration: none;
- border-radius: 6px;
-} 
+  display: inline-block;
+  padding: 12px 18px;
+  background-color: #c8136d;
+  color: #ffffff;
+  text-decoration: none;
+  border-radius: 6px;
+}
+.btn.secondary {
+  background-color: #986a7e;
+}

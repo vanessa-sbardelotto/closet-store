@@ -1,51 +1,60 @@
 <div class="form-box">
-    <h2>Cadastro de produto</h2>
-
-    <form [formGroup]="form" (ngSubmit)="submit()">
-
-        <div class="field">
-            <label for="name">Nome do produto</label>
-            <input id="name" type="text" formControlName="name" />
-
-            @if (form.controls.name.touched && form.controls.name.invalid) {
-            <small>Informe um nome com no mínimo 3 caracteres.</small>
-            }
-        </div>
-
-        <div class="field">
-            <label for="description">Descrição</label>
-            <textarea id="description" formControlName="description"></textarea>
-            @if (form.controls.description.touched && form.controls.description.invalid) {
-                <small>Informe uma descrição com no mínimo 10 caracteres.</small>
-            }
-        </div>
-
-        <div class="field">
-            <label for="category">Categoria</label>
-            <input id="category" type="text" formControlName="category" />
-
-            @if (form.controls.category.touched && form.controls.category.invalid) {
-                <small>A categoria é obrigatória.</small>
-            }
-        </div>
-
-        <div class="field">
-            <label for="price">Preço</label>
-            <input id="price" type="number" formControlName="price" />
-
-            @if (form.controls.price.touched && form.controls.price.invalid) {
-                <small>O preço é obrigatório.</small>
-            }
-        </div>
-
-        <div class="field">
-            <label for="image">Imagem do produto</label>
-            <input id="image" type="text" formControlName="image" />
-
-            @if (form.controls.image.touched && form.controls.image.invalid) {
-                <small>A imagem é obrigatória.</small>
-            }
-        </div>
-        <button type="submit">Salvar</button>
-    </form>
-</div> 
+  <h2>
+    @if (editingId !== null) {
+      Editar produto
+    } @else {
+      Cadastro de produto
+    }
+  </h2>
+  <form [formGroup]="form" (ngSubmit)="submit()">
+    <div class="field">
+      <label for="name">Nome</label>
+      <input id="name" type="text" formControlName="name" />
+      @if (form.controls.name.touched && form.controls.name.invalid) {
+        <small>Informe um nome com no mínimo 3 caracteres.</small>
+      }
+    </div>
+    <div class="field">
+      <label for="description">Descrição</label>
+      <textarea id="description" formControlName="description"></textarea>
+      @if (form.controls.description.touched && form.controls.description.invalid) {
+        <small>Informe uma descrição com no mínimo 10 caracteres.</small>
+      }
+    </div>
+    <div class="field">
+      <label for="category">Categoria</label>
+      <input id="category" type="text" formControlName="category" />
+      @if (form.controls.category.touched && form.controls.category.invalid) {
+        <small>A categoria é obrigatória.</small>
+      }
+    </div>
+    <div class="field">
+      <label for="size">Tamanho</label>
+      <input id="size" type="text" formControlName="size" />
+      @if (form.controls.size.touched && form.controls.size.invalid) {
+        <small>O tamanho é obrigatório.</small>
+      }
+    </div>
+    <div class="field">
+      <label for="image">Imagem (URL)</label>
+      <input id="image" type="text" formControlName="image" />
+      @if (form.controls.image.touched && form.controls.image.invalid) {
+        <small>A imagem é obrigatória.</small>
+      }
+    </div>
+    <div class="field">
+      <label for="price">Preço</label>
+      <input id="price" type="number" formControlName="price" />
+      @if (form.controls.price.touched && form.controls.price.invalid) {
+        <small>O preço é obrigatório.</small>
+      }
+    </div>
+    <button type="submit">
+      @if (editingId !== null) {
+        Atualizar
+      } @else {
+        Salvar
+      }
+    </button>
+  </form>
+</div>
