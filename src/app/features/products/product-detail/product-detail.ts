@@ -19,7 +19,7 @@ export class ProductDetail implements OnInit {
   errorMessage = '';
 
   ngOnInit(): void {
-    const id = Number(this.route.snapshot.paramMap.get('id'));
+    const id = this.route.snapshot.paramMap.get('id')!;
     this.productApiService.getById(id).subscribe({
       next: (response) => {
         this.product = response;

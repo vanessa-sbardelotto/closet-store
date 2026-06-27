@@ -2,7 +2,11 @@
   <h1>Bem-vindo à Closet Store</h1>
   <p>Nesta aplicação vamos cadastrar e gerenciar produtos ao longo das aulas.</p>
   <div class="actions">
-    <a class="btn" routerLink="/cadastro-produto">Cadastrar produto</a>
-    <a class="btn secondary" routerLink="/produtos">Listar produtos</a>
+    @if (authenticated) {
+      <a class="btn" routerLink="/produtos">Listar Produtos</a>
+      <a class="btn secondary" routerLink="/cadastro-produto">Cadastrar Produto</a>
+    } @else {
+      <a class="btn" routerLink="/login">Fazer login</a>
+    }
   </div>
 </section>

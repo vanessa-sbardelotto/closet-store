@@ -4,11 +4,14 @@
   align-items: center;
   padding: 20px 24px;
   background-color: #eb6ea0;
+  font-family: verdana;
 }
+
 .logo {
   font-size: 24px;
   font-weight: bold;
   color: #f4f0f2;
+  font-family: Verdana;
 }
 .menu {
   display: flex;

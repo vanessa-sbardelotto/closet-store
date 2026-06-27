@@ -2,7 +2,7 @@ import { Component, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
-import { ProductLocalService } from '../../../core/services/product-local';
+import { ProductApiService } from '../../../core/services/product-api';
 
 @Component({
   selector: 'app-product-form',
@@ -12,11 +12,11 @@ import { ProductLocalService } from '../../../core/services/product-local';
 })
 export class ProductForm implements OnInit {
   private fb = inject(FormBuilder);
-  private productLocalService = inject(ProductLocalService);
+  private productApiService = inject(ProductApiService);
   private route = inject(ActivatedRoute);
   private router = inject(Router);
 
-  editingId: number | null = null;
+  editingId: string | null = null;
 
   form = this.fb.nonNullable.group({
     name: ['', [Validators.required, Validators.minLength(3)]],
@@ -30,9 +30,8 @@ export class ProductForm implements OnInit {
   ngOnInit(): void {
     const id = this.route.snapshot.queryParamMap.get('id');
     if (id) {
-      this.editingId = Number(id);
-      const product = this.productLocalService.getById(this.editingId);
-      if (product) {
+      this.editingId = id;
+      this.productApiService.getById(id).subscribe((product) => {
         this.form.patchValue({
           name: product.name,
           description: product.description,
@@ -41,7 +40,7 @@ export class ProductForm implements OnInit {
           image: product.image,
           price: product.price
         });
-      }
+      });
     }
   }
 
@@ -51,27 +50,23 @@ export class ProductForm implements OnInit {
       return;
     }
     const formValue = this.form.getRawValue();
+    const product = {
+      name: formValue.name,
+      description: formValue.description,
+      category: formValue.category,
+      size: formValue.size,
+      image: formValue.image,
+      price: formValue.price
+    };
+
     if (this.editingId !== null) {
-      this.productLocalService.update({
-        id: this.editingId,
-        name: formValue.name,
-        description: formValue.description,
-        category: formValue.category,
-        size: formValue.size,
-        image: formValue.image,
-        price: formValue.price
+      this.productApiService.update(this.editingId, product).subscribe(() => {
+        this.router.navigate(['/produtos']);
       });
     } else {
-      this.productLocalService.add({
-        id: Date.now(),
-        name: formValue.name,
-        description: formValue.description,
-        category: formValue.category,
-        size: formValue.size,
-        image: formValue.image,
-        price: formValue.price
+      this.productApiService.create(product).subscribe(() => {
+        this.router.navigate(['/produtos']);
       });
     }
-    this.router.navigate(['/produtos']);
   }
 }

@@ -1,13 +1,37 @@
 import { Routes } from '@angular/router';
-import { Home } from './features/home/home';
-import { Products } from './features/products/products';
-import { ProductList } from './features/products/product-list/product-list';
-import { ProductDetail } from './features/products/product-detail/product-detail';
+import { authGuard } from './core/guards/auth-guard';
 
 export const routes: Routes = [
-  { path: '', component: Home },
-  { path: 'cadastro-produto', component: Products },
-  { path: 'produtos', component: ProductList },
-  { path: 'produtos/:id', component: ProductDetail },
-  { path: '**', redirectTo: '' }
+  {
+    path: '',
+    loadComponent: () =>
+      import('./features/home/home').then((m) => m.Home)
+  },
+  {
+    path: 'login',
+    loadComponent: () =>
+      import('./features/auth/login/login').then((m) => m.LoginComponent)
+  },
+  {
+    path: 'produtos',
+    loadComponent: () =>
+      import('./features/products/product-list/product-list').then((m) => m.ProductList),
+    canActivate: [authGuard]
+  },
+  {
+    path: 'produtos/:id',
+    loadComponent: () =>
+      import('./features/products/product-detail/product-detail').then((m) => m.ProductDetail),
+    canActivate: [authGuard]
+  },
+  {
+    path: 'cadastro-produto',
+    loadComponent: () =>
+      import('./features/products/product-form/product-form').then((m) => m.ProductForm),
+    canActivate: [authGuard]
+  },
+  {
+    path: '**',
+    redirectTo: ''
+  }
 ];

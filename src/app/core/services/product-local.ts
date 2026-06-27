@@ -21,7 +21,7 @@ export class ProductLocalService {
     this.saveAll(products);
   }
 
-  getById(id: number): Product | undefined {
+  getById(id: string): Product | undefined {
     return this.getAll().find((product) => product.id === id);
   }
 
@@ -32,7 +32,7 @@ export class ProductLocalService {
     this.saveAll(products);
   }
 
-  delete(id: number): void {
+  delete(id: string): void {
     const products = this.getAll().filter((product) => product.id !== id);
     this.saveAll(products);
   }

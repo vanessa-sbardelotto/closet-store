@@ -2,7 +2,15 @@
   <div class="logo">Closet Store</div>
   <nav class="menu">
     <a routerLink="/">Home</a>
-    <a routerLink="/cadastro-produto">Cadastrar Produto</a>
-    <a routerLink="/produtos">Listar Produtos</a>
+    @if (authenticated) {
+      <a routerLink="/produtos">Listar Produtos</a>
+      <a routerLink="/cadastro-produto">Cadastrar Produto</a>
+      <span class="user-name">{{ userName }}</span>
+      <button type="button" class="logout-btn" (click)="logout()">
+        Sair
+      </button>
+    } @else {
+      <a routerLink="/login">Login</a>
+    }
   </nav>
 </header>

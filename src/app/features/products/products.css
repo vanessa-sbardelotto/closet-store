@@ -39,7 +39,7 @@ button {
   border: none;
   border-radius: 6px;
   cursor: pointer;
-  background-color: #c8136d;
+  background-color: #cc106e;
   color: #ffffff;
   transition: opacity 0.3s;
 }
@@ -51,6 +51,22 @@ button:disabled {
 
 .success-message {
   background-color: #1d7f43;
+  padding: 14px;
+  border-radius: 6px;
+  margin-bottom: 20px;
+  color: #ffffff;
+}
+
+.error-message {
+  background-color: #f67206;
+  padding: 14px;
+  border-radius: 6px;
+  margin-bottom: 20px;
+  color: #ffffff;
+}
+
+.info-message {
+  background-color: #7a7a7a;
   padding: 14px;
   border-radius: 6px;
   margin-bottom: 20px;
